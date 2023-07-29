@@ -1,3 +1,4 @@
+# https://codeforces.com/problemset/problem/381/A
 num = int(input())
 list1 = list(map(int, input().split()))
 left = 0
