@@ -3,8 +3,9 @@ class NumMatrix:
     def __init__(self, matrix: List[List[int]]):
         row,colum = len(matrix), len(matrix[0])
         self.sumMatrix = [[0]*(colum +1) for r in range(row+1)]
-        summ = 0
+        
         for r in range(row):
+            summ = 0
             for c in range(colum):
                 summ += matrix[r][c]
                 above = self.sumMatrix[r][c+1]
