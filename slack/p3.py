@@ -1,25 +1,13 @@
-n = list(map(int, (input().split())))
-counter = []
-def operation(x):
-    counter.append(x)
-    if x >3*n[1]:
-           return
-    if x > n[1]:
-        return x
-    elif x < n[1]:
-                operation(x*2)
-                counter.pop()
-                operation((x*10)+1)
-                counter.pop()
+def solve():
+    n, a,b = list(map(int, input().split()))
+    if n == a == b:
+        return 'Yes'
+
+    if a+b+2 <= n:
+        return 'Yes'
     else:
-           print("YES")
-           print(*counter)
-           quit()
-y = 0
-check =False
-operation(n[0])
-print("NO")
+        return 'No'
 
-       
 
-                
+for t in range(0, int(input())):
+    print(solve())
