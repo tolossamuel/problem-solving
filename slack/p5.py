@@ -1,14 +1,38 @@
-def main():
-    t = int(input())
-    for _ in range(t):
-        n, x1, y1, x2, y2 = map(int, input().split())
-        print(abs(ans(x1, y1, n) - ans(x2, y2, n)))
+n = int(input())
+x = list(map(int, input().split()))
+left = 0
 
-def ans(x, y, n):
-    x = min(x, n - x + 1)
-    y = min(y, n - y + 1)
-    return min(x, y)
+pre_sum = [x[0]]
+suf_sum = [x[-1]]
+for i in range(1,len(x),+1):
+	pre_sum.append(pre_sum[i-1]+x[i])
+	suf_sum.append(x[len(x)-i-1]+suf_sum[i-1])
+for i in range(len(pre_sum)):
+	if n == pre_sum[i]:
+		left = i+1
+		break
 
-if __name__ == "__main__":
-    main()
+for i in range(len(suf_sum)):
+	if n == suf_sum[i]:
+		if (left > i+1 or left == 0):
+			left = i+1
+		break
+for i in range(len(x)):
+	if (n == 0):
+		if (left > i+1 or left == 0):
+			left = i+1
+		break
+	if (n < 0):
+		center = 0
+		break
+	if x[i]< x[len(x)-1-i]:
+		n -= x[i]
+	else:
+		n -= x[len(x)-1-i]
+	
+if left == 0:
+	print(-1)
+else:
+	print(left)
+
 
