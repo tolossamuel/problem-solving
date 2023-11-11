@@ -1,31 +1,14 @@
-left = 0
-s = "abc"
-right = len(s)-1
-counter = 0
-s = list(s)
-while (left < right):
-	
-	if s[left] != s[right] and counter != 1:
-		if s[right -1 ]!= s[left]:
-			s.pop(left)
-			left -= 1
-			
-		elif s[left + 1 ]!= s[right]:
-			s.pop(right)
-			left -= 1
-			
-		elif s[left]!= s[right] and left+1 == right:
-			s.pop(left)
-			left -= 1
-			
-			
-		else:
-			print(False)
-		counter += 1
-		print(s,counter,right,left)
-	elif s[left] != s[right]:
-			print(False)
-	left += 1
-	right -= 1
-	print(left,right)
-print(True)
+dic = {"I":1,"V":5,"X":10,"L":50,"C":100,"D":500,"M":1000}
+num = 0
+s = "LVIII"
+if (s):
+	num = dic[s[-1]]
+for i in range(len(s)-1,0,-1):
+	print(s[i-1], s[i])
+	if dic[s[i-1]] < dic[s[i]]:
+		print(dic[s[i-1]], dic[s[i]])
+		print()
+		num -= dic[s[i-1]] 
+	else:
+		num += dic[s[i-1]]
+print(num)
