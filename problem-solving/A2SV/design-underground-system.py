@@ -2,7 +2,7 @@ class UndergroundSystem(object):
 
     def __init__(self):
         self.checkin = defaultdict(list)
-        self.checkout = defaultdict(list)
+      
         self.average = defaultdict(list)
 
 
@@ -23,7 +23,6 @@ class UndergroundSystem(object):
         :type t: int
         :rtype: None
         """
-        self.checkout[id] = [stationName,t]
         self.average[(self.checkin[id][0],stationName)].append((t- self.checkin[id][1]))
     def getAverageTime(self, startStation, endStation):
         """
