@@ -6,32 +6,14 @@ class Solution(object):
         """
         if len(arr) < 3:
             return False
-        check = False
-        stack = [0,0]
-        for i in range(len(arr)):
-            if arr[i] > stack[0]:
-                stack = [arr[i],i]
-        if stack[1] == 0 or stack[1] == len(arr)-1:
+        left = 0
+        right = len(arr) -1
+     
+        while(left < len(arr)-1 and arr[left] < arr[left+1]):
+            left += 1
+        while (right > 0 and arr[right] < arr[right-1]):
+            right -= 1
+        if left == 0 or right == len(arr)-1 or (left != right):
             return False
-        left = stack[1]-1
-        right = stack[1]+1
-       
-        while(left >= -1 and right <= len(arr)):
-            if left >= 0:
-                if arr[left] >= arr[left+1]:
-                    return False
-                else:
-                    left -= 1
-            if right < len(arr):
-                if arr[right] >=  arr[right-1]:
-                
-                    return False
-                else:
-                    right += 1
-            if left == -1 and right == len(arr):
-                break
-
-        return True
-
-
         
+        return True
