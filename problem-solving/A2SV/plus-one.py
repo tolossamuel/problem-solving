@@ -1,11 +1,18 @@
-class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
-        b=""
-        for i in range(len(digits)):
-            b+=str(digits[i])
-        b=int(b)+1
-        b=str(b)
-        digits.clear()
-        for i in range(len(b)):
-            digits.append(int(b[i]))
+class Solution(object):
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        remider = (digits[-1] + 1)//10
+        digits[-1] = (digits[-1] + 1)%10
+        if remider:
+            for i in range(len(digits)-2,-1,-1):
+                temp = (digits[i] + remider)
+                digits[i] = (temp)%10
+                remider = (temp//10)
+                if not remider:
+                    break
+            if remider == 1:
+                digits.insert(0,remider)
         return digits
