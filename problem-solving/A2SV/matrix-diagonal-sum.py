@@ -7,25 +7,15 @@ class Solution(object):
         left = 0
         right = len(mat)-1
         ans = 0
-        for i in range(len(mat)):
-            if i< len(mat)//2:
-                if left == right:
-
-                    ans += mat[i][left]
-                    left -= 1
-                    right += 1
-                elif left + 1 == right:
-                    ans += mat[i][left]+mat[i][right] 
-                else:
-                    ans += mat[i][left]+mat[i][right]
-                    left += 1
-                    right -= 1
-            else:
-                if left == right:
-                    ans += mat[i][left]
-                else:
-                    ans += mat[i][left] + mat[i][right]
-                left -= 1
-                right += 1
+        n = len(mat)-1
+        if len(mat) == 1:
+            return mat[0][0]
+        for i in range(len(mat)//2):
+            ans += mat[i][left]+ mat[i][right]
+            ans += mat[n-i][left] + mat[n-i][right]
+            left += 1
+            right -= 1
+        if left == right:
+            ans += mat[n//2][left]
         return ans
             
