@@ -1,13 +1,18 @@
-class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
-        
-        if len(nums) == 0:
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
             return 0
-
-        unique_ptr = 1
-        for ix in range(1, len(nums)):
-            if nums[ix] != nums[ix-1]:
-                nums[unique_ptr] = nums[ix]
-                unique_ptr += 1
-
-        return unique_ptr
+        index = 1
+        
+        for i in range(1,len(nums)):
+            if nums[i]!= nums[i-1]:
+                nums[index] = nums[i]
+                # print(nums[index],nums[i])
+                index += 1
+                # print(nums)
+            
+        return index
