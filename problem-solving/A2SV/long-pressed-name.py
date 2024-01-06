@@ -20,12 +20,10 @@ class Solution(object):
                 countElementTyped += 1
                 y += 1
             else:
-                if name[x] != typed[y-1]:
-                    numOfDiff += 1
-                if numOfDiff == 1:
-                    return False
-                if countElementTyped > 0:
-                    storCountTyped = countElementTyped
+                numOfDiff += 1 if name[x] != typed[y-1] else 0
+                if numOfDiff==1:
+                    return False 
+                storCountTyped = countElementTyped if countElementTyped > 0 else storCountTyped
                 countElementTyped = 0
                
                 x += 1
