@@ -5,31 +5,16 @@
 #         self.next = next
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        odd = []
-        even = []
-        temp = head
-        count = 0
-        new = None
-        while(temp):
-            if count % 2 == 0:
-                odd.append(temp.val)
-            else:
-                even.append(temp.val)
-            count += 1
-            temp = temp.next
-        if odd:
-            new = ListNode(odd[-1])
-            tail = new
-        elif even:
-            new = ListNode(even[-1])
-            tail = new
-        print(odd,even)
-        for i in range(len(odd)-2,-1,-1):
-            temp = ListNode(odd[i],new)
-            new = temp
-        x = 0 if odd else 1
-        for i in range(x,len(even)):
-            temp = ListNode(even[i])
-            tail.next = temp
-            tail = tail.next
-        return new
+        if not head or not head.next:
+            return head
+        left = head
+        right = head.next
+        
+        while(right and right.next):
+            new = right.next
+            right.next = right.next.next
+            new.next = left.next
+            left.next = new
+            left = left.next
+            right = right.next
+        return head
