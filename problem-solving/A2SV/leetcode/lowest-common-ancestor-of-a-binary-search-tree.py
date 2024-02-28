@@ -9,30 +9,19 @@ class Solution:
     def __init__(self):
         self.store = set()
         self.ans = None
-    def parent(self,node,prev):
-        if not node:
-            return 
-        node.pre = prev
-        
-        self.parent(node.left,node)
-        self.parent(node.right,node)
-
+    
     def travel(self,root: 'TreeNode',p : 'TreeNode',q : 'TreeNode'):
         if not root:
-            return       
-        self.travel(root.left,q,p)
-        if root == p or root == q:
-            temp = root
-            while(temp != None):
-                
-                if temp.val in self.store and self.ans == None:
-                   
-                    self.ans = temp
-                    
-                self.store.add(temp.val)
-                temp = temp.pre
-        self.travel(root.right,q,p)
+            return None
+        if p.val == root.val or q.val == root.val:
+            return root
+        if (min(p.val,q.val) < root.val) and max(p.val,q.val) > root.val:
+            return root
+        elif p.val < root.val and q.val < root.val:
+            return self.travel(root.left,p,q)
+        elif p.val > root.val and q.val > root.val:
+            return self.travel(root.right,p,q)
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        self.parent(root,None)
-        self.travel(root,p,q)
-        return self.ans
+        
+        return self.travel(root,p,q)
+        
