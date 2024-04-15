@@ -5,21 +5,22 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def __init__(self):
-        self.ans = 0
-    def travel(self,node,total):
-        if not node:
-            
-            return 
-        
-        total *= 10
-        total += node.val
-        if not node.left and not node.right:
-            self.ans += total
-
-        self.travel(node.left,total)
-        self.travel(node.right,total)
-        # if not root.
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
-        self.travel(root,0)
-        return self.ans
+        _sum = 0
+        def travel(node,number):
+            nonlocal _sum
+            if not node:
+
+                return
+            travel(node.left,number + [str(node.val)])
+            travel(node.right,number + [str(node.val)])
+            # print(number + [str(node.val)])
+            if not node.left and not node.right:
+                x = int("".join(number + [str(node.val)]))
+                # print(x)
+                _sum += x
+            
+
+            return node
+        travel(root,[])
+        return _sum
