@@ -5,21 +5,17 @@ class Solution:
         for i in range(len(graph)):
             path[i] += graph[i]
         valid = []
-        cyclic = set()
-        print(outGoing)
         def dfs(point):
             # print(point)
             
             res = True
             for i in path[point]:
                 if outGoing[i] == 1:
-                    cyclic.add(i)
                     return False
                 if outGoing[i] != 2:
                     outGoing[point] = 1
                     res = res and dfs(i)
             if not res:
-                cyclic.add(point)
                 return res
             outGoing[point] = 2
             valid.append(point)
