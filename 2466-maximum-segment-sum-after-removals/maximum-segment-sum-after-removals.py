@@ -27,7 +27,7 @@ class Solution:
         ans = []
         check = [0]*len(nums)
         _max = float("-inf")
-        for x in range(len(removeQueries)-1,-1,-1):
+        for x in range(len(removeQueries)-1,0,-1):
             check[removeQueries[x]] = nums[removeQueries[x]]
             left = removeQueries[x]
             parent = self.dic[removeQueries[x]]
@@ -38,7 +38,6 @@ class Solution:
             ammount = self.sum[value]
             _max = max(ammount,_max)
             ans.append(_max)
-        ans.pop()
         ans.reverse()
         ans.append(0)
         return ans
