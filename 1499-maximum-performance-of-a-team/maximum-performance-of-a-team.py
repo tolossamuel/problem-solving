@@ -14,9 +14,6 @@ class Solution:
                 ans = max(ans,_sum * comp[i][0])
                 heappush(heap,(comp[i][1],comp[i][0]))
                 k-= 1
-                if k == 0:
-                    temp = _sum * comp[i][0]
-                    ans = max(ans,temp)
             else:
                 t,v = heappop(heap)
                 _sum -= t
