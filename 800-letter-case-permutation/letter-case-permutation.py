@@ -2,8 +2,8 @@ class Solution:
     def travel(self,start,word): 
         for i in range(start,len(self.s)):
             if self.s[i].isalpha():
-                self.travel(i+1,word + self.s[i].upper())
-                self.travel(i+1,word+ self.s[i].lower())
+                self.travel(i+1,word + self.s[i])
+                self.travel(i+1,word+ self.s[i].swapcase())
             else:
                 self.travel(i+1,word+self.s[i])
         if len(word) == len(self.s):
