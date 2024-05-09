@@ -1,7 +1,6 @@
 class Solution:
     def travel(self,start,word): 
-        if word != "":
-            self.temp.append(word)
+        self.temp.append(word)
         for i in range(start,len(self.s)):
             if self.s[i].isalpha():
                 self.travel(i+1,self.s[i])
@@ -16,6 +15,6 @@ class Solution:
     def letterCasePermutation(self, s: str) -> List[str]:
         self.ans = []
         self.s = s
-        self.temp = [""]
+        self.temp = []
         self.travel(0,"")
         return self.ans
