@@ -8,15 +8,14 @@ class Solution:
                 self.travel(i+1,self.s[i].swapcase())
             else:
                 self.travel(i+1,self.s[i])
-        if len(self.temp) == len(self.s):
+        if (len(self.temp)-1) == len(self.s):
             self.ans.append("".join(self.temp))
-        if self.temp:
-            self.temp.pop()
+        self.temp.pop()
         return 
         
     def letterCasePermutation(self, s: str) -> List[str]:
         self.ans = []
         self.s = s
-        self.temp = []
+        self.temp = [""]
         self.travel(0,"")
         return self.ans
