@@ -1,17 +1,22 @@
 class Solution:
     def travel(self,start,word): 
+        if word != "":
+            self.temp.append(word)
         for i in range(start,len(self.s)):
             if self.s[i].isalpha():
-                self.travel(i+1,word + self.s[i])
-                self.travel(i+1,word+ self.s[i].swapcase())
+                self.travel(i+1,self.s[i])
+                self.travel(i+1,self.s[i].swapcase())
             else:
-                self.travel(i+1,word+self.s[i])
-        if len(word) == len(self.s):
-            self.ans.append(word)
+                self.travel(i+1,self.s[i])
+        if len(self.temp) == len(self.s):
+            self.ans.append("".join(self.temp))
+        if self.temp:
+            self.temp.pop()
         return 
         
     def letterCasePermutation(self, s: str) -> List[str]:
         self.ans = []
         self.s = s
+        self.temp = []
         self.travel(0,"")
         return self.ans
