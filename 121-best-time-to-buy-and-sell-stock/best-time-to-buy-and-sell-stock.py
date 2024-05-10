@@ -1,16 +1,10 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        stack = []
+        big_number = 0
         amount = 0
-        for i in prices:
-            if not stack:
-                stack.append(i)
-            while(len(stack) > 1 and stack[-1] < i):
-                stack.pop()
-            while(stack and stack[-1] > i):
-                stack.pop()
-            stack.append(i)
-            if len(stack) > 1:
-                amount = max(amount,(stack[-1] - stack[-2]))
+        for i in range(len(prices)-1,-1,-1):
+            big_number = max(big_number,prices[i])
+            amount = max(amount,big_number - prices[i])
+
 
         return amount
