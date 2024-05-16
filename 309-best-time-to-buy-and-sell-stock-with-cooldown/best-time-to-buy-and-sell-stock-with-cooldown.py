@@ -2,18 +2,20 @@ class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         
         catch = {}
-        def solve(sell,buy):
-            if sell >= len(prices):
+        def solve(index,states):
+            if index >= len(prices):
                 return 0
-            if (sell,buy) in catch:
-                return catch[(sell,buy)]
-            i = buy if prices[sell] >= prices[buy] else sell
-           
-            ans = max (
-                solve(sell+1,i),
-                solve(sell+2,sell+2) + prices[sell] - prices[buy]
-            )
-            catch[(sell,buy)] = ans
-
+            if (index,states) in catch:
+                return catch[(index,states)]
+            ans = 0
+            if states:
+                ans = max(solve(index+1,states),
+                          -prices[index]+solve(index+1,False))
+            else:
+                ans = max(
+                    solve(index+1,states),
+                    prices[index] + solve(index+2,True)
+                )
+            catch[(index,states)] = ans
             return ans
-        return solve(0,0)
+        return solve(0,True)
