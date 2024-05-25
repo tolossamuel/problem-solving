@@ -6,13 +6,13 @@ class Solution:
         if x == _sum:
             return len(nums)
         prefix = [0]
-        sufix = [0]
         dic = {0:0}
         for i in nums:
             prefix.append(i + prefix[-1])
+        prev = 0
         for i in range(len(nums)-1,-1,-1):
-            sufix.append(nums[i] + sufix[-1])
-            dic[sufix[-1]] = dic[sufix[-2]]+1
+            dic[nums[i]+prev] = dic[prev]+1
+            prev += nums[i]
         _min = float("inf")
         for i in range(len(prefix)):
             dif = x - prefix[i]
