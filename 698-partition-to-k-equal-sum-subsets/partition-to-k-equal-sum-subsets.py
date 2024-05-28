@@ -13,7 +13,6 @@ class Solution:
         for i in nums:
             if i > h:
                 return False
-        visited = set()
         subset = [0]*k
         nums.sort(reverse = True)
         def solve(index):
