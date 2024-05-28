@@ -5,7 +5,6 @@ class Solution(object):
         :rtype: int
         """
         ans = 1 if "1" in matrix[-1] else 0
-        print(ans)
         m = len(matrix)
         n = len(matrix[0])
         for i in range(len(matrix)-2,-1,-1):
