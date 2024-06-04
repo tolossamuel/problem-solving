@@ -34,3 +34,4 @@ class Solution:
                         queue.append([cur.children[x],word+x])
     
         return ans
+    
