@@ -15,3 +15,4 @@ class Solution:
             elif val < k:
                 left += 1
         return counter
+    
