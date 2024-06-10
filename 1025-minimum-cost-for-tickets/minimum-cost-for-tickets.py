@@ -16,3 +16,4 @@ class Solution:
                 next_30_day += dp[pos]
             dp[i] = min(next_30_day,next_7_day,dp[i+1]+costs[0])
         return dp[0]
+    
