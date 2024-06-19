@@ -3,4 +3,5 @@ class Solution:
         _xor = 0
         for i in nums:
             _xor ^= i
+        
         return _xor
