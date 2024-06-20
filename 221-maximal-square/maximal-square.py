@@ -25,3 +25,4 @@ class Solution(object):
                         ans = max(ans,int(matrix[i][y]))
           
         return ans**2
+    
