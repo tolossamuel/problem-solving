@@ -35,4 +35,6 @@ class LFUCache:
             del self.keyToNode[k]
         self.countToNode[1][key] = self.keyToNode[key] = Node(key, value, 1)
         self.mini = 1
+
         return
+    
