@@ -9,6 +9,8 @@ class Solution:
             sorted_profit[x] = max(sorted_profit[x],_max)
             _max = max(sorted_profit[x],_max)
       
+
+      
         _sum = 0
         for x in worker:
             index = bisect.bisect_right(difficulty,x)
