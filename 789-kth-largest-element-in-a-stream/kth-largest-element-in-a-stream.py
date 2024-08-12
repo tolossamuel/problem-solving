@@ -1,20 +1,15 @@
 class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
-        nums.sort(reverse = True)
-        self.ans = []
-        heapify(self.ans)
-        for i in range(min(k,len(nums))):
-            heappush(self.ans,nums[i])
+        self.nums = sorted(nums)
         self.k = k
-        print(self.ans)
     def add(self, val: int) -> int:
-        if len(self.ans) < self.k:
-            heappush(self.ans,val)
-        elif self.ans[0] < val:
-            heappop(self.ans)
-            heappush(self.ans,val)
-        return self.ans[0]
+        x = bisect.bisect_right(self.nums,val)
+        if x >= len(self.nums):
+            self.nums.append(val)
+        else:
+            self.nums.insert(x,val)
+        return self.nums[-self.k]
         
 
 
