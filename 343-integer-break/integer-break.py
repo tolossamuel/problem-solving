@@ -20,7 +20,10 @@ class Solution:
                 solve(n - num,mul * num,num,k+1),
 
             )
+
+
             catch[(n,mul,num)] = ans
             return ans
+            
         return solve(n,1,1,0)
         
