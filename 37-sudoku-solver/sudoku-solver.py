@@ -32,6 +32,9 @@ class Solution:
                 down += left
                 if (str(i) in row[x]) or (str(i) in col[y]) or (str(i) in cells[down]):
                     continue
+
+
+                    
                 board[x][y] = str(i)
                 cells[down].add(str(i))
                 row[x].add(str(i))
