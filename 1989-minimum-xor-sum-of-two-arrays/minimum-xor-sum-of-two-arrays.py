@@ -16,6 +16,10 @@ class Solution:
                         solve(index+1,visited) + ( nums1[index]^nums2[i])
                         
                     )
+
+
+
+                    
                     visited ^= (1<<i)
             cache[(index,visited)] = min_ans
             return min_ans
