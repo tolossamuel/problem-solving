@@ -9,5 +9,3 @@ class Solution:
             ans.append(xor_^k)
             xor_ ^= nums[i]
         return ans
-
-
