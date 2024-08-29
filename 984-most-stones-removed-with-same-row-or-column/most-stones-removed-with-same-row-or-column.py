@@ -1,36 +1,38 @@
 class Solution:
+
     def find(self,x):
         if x == self.dic[x]:
             return x
         self.dic[x] = self.find(self.dic[x])
         return self.dic[x]
     def union(self,x,y):
-        xp = self.find(x)
-        yp = self.find(y)
-        if self.size[xp] > self.size[yp]:
-            self.dic[yp] = xp
-            self.size[xp] += self.size[yp]
-        else:
-            self.dic[xp] = yp
-            self.size[yp] += self.size[xp]
-    def check(self,x,y):
-        if x[0] == y[0] or x[1] == y[1]:
-            return True
-        
-        return False
+        p_x = self.find(x)
+        p_y = self.find(y)
+        if p_x == p_y:
+            return 
+        if self.size[p_x] < self.size[p_y]:
+            p_x,p_y = p_y,p_x
+        self.dic[p_y] = self.dic[p_x]
+        self.size[p_x] += self.size[p_y]
+        self.size[p_y] = 1
+
+    
     def removeStones(self, stones: List[List[int]]) -> int:
-        self.dic = {(x[0],x[1]) : tuple(x) for x in stones}
-        self.size = {(x[0],x[1]):1 for x in stones}
-        for i in range(len(stones)):
-            for y in range(i,len(stones)):
-                if self.check(stones[i],stones[y]):
-                    self.union(tuple(stones[i]),tuple(stones[y]))
+        self.dic = {
+            tuple(stone) : tuple(stone) for stone in stones
+        }
+        self.size = {
+            tuple(stone) : 1 for stone in stones
+        }
+
+        for stone in stones:
+            for x in stones:
+                if stone[0] == x[0] or stone[1] == x[1]:
+                    self.union(tuple(stone),tuple(x))
         for key in self.dic:
             self.find(key)
-        counter = defaultdict(int)
-        _max = 0
-        for key in self.dic:
-            counter[self.dic[key]] += 1
-        for key in counter:
-            _max += (counter[key]-1)
-        return  _max
+
+        ans = 0
+        for key in self.size:
+            ans += (self.size[key] - 1)
+        return ans
