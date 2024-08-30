@@ -10,6 +10,10 @@ class Solution:
                 left = mid + 1
             else:
                 right = mid - 1
+
+
+
+
         left = 0
         right = len(nums)-1
         while(left <= right):
@@ -19,6 +23,7 @@ class Solution:
                 right = mid - 1
             else:
                 left = mid + 1
+                
         if pos[0] > pos[1]:
             return [-1,-1]
         return pos
