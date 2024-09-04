@@ -8,6 +8,10 @@ class Solution:
 
         arr = [int(x) for x in arr]
    
+
+
+
+   
         for i in range(k):
             _sum = sum(arr)
             arr = []
